@@ -55,4 +55,4 @@ CREATE TABLE favourite (
     FOREIGN KEY(user_id) REFERENCES user(user_id),
     FOREIGN KEY(flat_id) REFERENCES flat(flat_id)
 
-)
+);
