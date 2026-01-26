@@ -20,6 +20,7 @@ services:
 
     ports:
       - 3306:3306
+      - 33060:33060
 
     env_file: "./.env"
 
