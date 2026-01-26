@@ -7,7 +7,8 @@ ENV NODE_ENV development
 WORKDIR /usr/src/app
 
 
-COPY ["package.json", "package-lock.json", "svelte.config.js", "vite.config.ts", "./"]
+COPY ["package.json", "package-lock.json", "svelte.config.js", "vite.config.js", "./"]
+
 
 
 RUN npm install

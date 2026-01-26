@@ -8,7 +8,7 @@ export const load = async () => {
 
 	try {
 
-		const [rows,fields] = await pool.query('SELECT * from `user`')
+		const [rows,fields] = await pool.query('SELECT * from user')
 
 		console.log(rows)
 	} catch (err) {
