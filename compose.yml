@@ -1,0 +1,34 @@
+services:
+  client:
+    image: client
+    restart: on-failure
+    build: ./
+    ports:
+      - 5173:5173
+      - 24678:24678
+
+    depends_on:
+      database:
+        condition: service_healthy
+
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
+  database:
+    image: 'mysql:latest'
+
+    ports:
+      - 3306:3306
+
+    env_file: "./.env"
+
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+    volumes:
+      - ${PWD}/mysql-data/:/var/lib/mysql/
+
