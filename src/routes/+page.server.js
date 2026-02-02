@@ -1,5 +1,5 @@
 
-import { pool } from "$lib/server/db"
+import { custom_pool } from "$/lib/server/db"
 
 export const load = async () => {
 
@@ -8,7 +8,7 @@ export const load = async () => {
 
 	try {
 
-		const [rows,fields] = await pool.query('SELECT * from user')
+		const [rows,fields] = await custom_pool.query('SELECT * from user')
 
 		console.log(rows)
 	} catch (err) {

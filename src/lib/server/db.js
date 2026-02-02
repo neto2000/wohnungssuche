@@ -4,7 +4,7 @@ import {MYSQL_DATABASE, MYSQL_PASSWORD, MYSQL_USER, TEST} from "$env/static/priv
 
 
 
-export const pool = mysql.createPool({
+export const custom_pool = mysql.createPool({
 	host: 'database',
 	user: MYSQL_USER,
 	password: MYSQL_PASSWORD,

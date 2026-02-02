@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { pool } from "$lib/server/db"
+import { custom_pool } from '$lib/server/db';
 
 export async function POST({request, cookies}) {
 	
@@ -9,7 +9,7 @@ export async function POST({request, cookies}) {
 
 	try {
 
-		const [rows,fields] = await pool.query('SELECT user_id FROM user WHERE email = ? AND password = ?', [email, password])
+		const [rows,fields] = await custom_pool.query('SELECT user_id FROM user WHERE email = ? AND password = ?', [email, password])
 
 		if(rows.length != 0) {
 
