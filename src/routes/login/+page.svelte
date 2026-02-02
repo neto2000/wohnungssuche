@@ -1,10 +1,17 @@
 
 <script>
 
+	import {goto} from '$app/navigation'
+	import { user_state } from '$lib/store.svelte';
+
 	let username = $state("Hallo")
 	let email = $state("");
 
 	let password = $state("")
+
+
+
+	let error_msg = $state("")
 
 	async function login() {
 
@@ -22,7 +29,15 @@
 
 		let data = await res.json()	
 
-		console.log(data.logged_in)
+		user_state.logged_in = data.logged_in
+
+		if (data.logged_in) {
+			
+			goto('/')
+		}
+
+		error_msg = "wrong email or password"	
+
 	}
 
 </script>
@@ -34,4 +49,6 @@
 	<input type="text" bind:value={password} />
 	
 	<button onclick={login}>login</button>
+
+	<p style="color: red;">{error_msg}</p>
 </div>

@@ -7,7 +7,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE flat (
-    flat_id INT NOT NULL,
+    flat_id INT NOT NULL AUTO_INCREMENT,
     user_id INT,
     title varchar(255),
     description varchar(255),
