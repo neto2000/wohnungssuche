@@ -4,7 +4,7 @@
   
   - [x] Login logic
 
-  - [ ] complete database
+  - [x] complete database
 
   - [ ] basic page for a single flat (url arguments for data retrival)
 
