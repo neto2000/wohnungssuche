@@ -42,9 +42,11 @@
 		<button onclick={search}>Suchen</button>
 	</div>
 
-	<div></div>
+	<div class="flat-list">
 
-	<FlatList title="test" price=10 />
+		<FlatList title="test" price=10 />
+	</div>
+
 </div>
 
 <style>
@@ -52,6 +54,13 @@
 .search-container {
 	
 	display: flex;
+}
+
+.flat-list {
+	
+	display: flex;
+
+	width: 75%;
 }
 
 .search-element {
