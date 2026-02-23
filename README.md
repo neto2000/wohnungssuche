@@ -21,6 +21,7 @@
   - [ ] start page
 
   - [ ] let user create a flat
+  - [ ] test
 
  ## SQL statements
 
