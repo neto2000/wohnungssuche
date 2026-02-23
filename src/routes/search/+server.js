@@ -3,7 +3,7 @@ import { custom_pool } from '$lib/server/db';
 
 export async function POST({request, cookies}) {
 	
-	const {city} = await request.json();
+	const {city, area, price, rooms, created_at, available_from, sort} = await request.json();
 
 	let search_query = "%" + city + "%";
 	
