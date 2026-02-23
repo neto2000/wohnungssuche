@@ -1,4 +1,6 @@
 <script>
+    import FlatList from "../../lib/components/flat_list.svelte";
+
 
 	let search_city = $state("")
 	
@@ -39,6 +41,10 @@
 
 		<button onclick={search}>Suchen</button>
 	</div>
+
+	<div></div>
+
+	<FlatList title="test" price=10 />
 </div>
 
 <style>
