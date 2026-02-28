@@ -6,9 +6,8 @@
 	
 </script>
 
-<h1>Welcome to SvelteKit</h1>
 
 <p>Status: {user_state.logged_in}</p>
+<p>ID: {user_state.user_id}</p>
 
 <a href="/login">Login</a>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>

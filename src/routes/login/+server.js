@@ -13,7 +13,7 @@ export async function POST({request, cookies}) {
 
 		if(rows.length != 0) {
 
-			return json({logged_in: true}, {status: 200})
+			return json({logged_in: true, user_id: rows[0].user_id}, {status: 200})
 		}
 		else {
 			throw new Error("result is empty")

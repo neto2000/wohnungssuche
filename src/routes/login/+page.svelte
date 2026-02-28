@@ -30,6 +30,7 @@
 		let data = await res.json()	
 
 		user_state.logged_in = data.logged_in
+		user_state.user_id = data.user_id
 
 		if (data.logged_in) {
 			

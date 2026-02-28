@@ -45,7 +45,7 @@
 					ug: search_available_from_UG,
 					og: search_available_from_OG
 				},
-				sort: ,
+				sort: "",
 
 			}) 
 		})
