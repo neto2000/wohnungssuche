@@ -11,8 +11,9 @@ export async function POST({request, cookies}) {
 
 		const [rows,fields] = await custom_pool.query('INSERT INTO user (user_name, email, password) VALUES (?, ?, ?)', [name, email, password])
 
+		const [rows2,fields2] = await custom_pool.query('SELECT user_id FROM user WHERE email = ? AND password = ?', [email, password])
 		
-		return json({status: 200})
+		return json({user_id: rows2[0].user_id}, {status: 200})
 	}
 	catch(e) {
 

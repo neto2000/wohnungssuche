@@ -1,5 +1,8 @@
 <script>
 	
+	import { user_state } from '$lib/store.svelte';
+	import {goto} from '$app/navigation'
+		
 	let name = $state("")
 	let email = $state("")
 
@@ -25,6 +28,33 @@
 			return
 		}
 
+		const res = await fetch('/register', {
+			
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				name: name,
+				email: email,
+				password: password
+			}) 
+		})
+
+		if (res.status != 200) {
+
+			msg = "Error"
+
+			return
+
+		}
+
+		let data = await res.json()
+
+		user_state.logged_in = true
+		user_state.user_id = data.user_id
+
+		goto("/")
 
 	}
 

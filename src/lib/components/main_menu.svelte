@@ -1,11 +1,14 @@
 <script>
 	
+	import { user_state } from '$lib/store.svelte';
 
 	let {visible = $bindable()} = $props()
 
 
 	function log_out() {
-
+		
+		user_state.logged_in = false
+		user_state.user_id = -1
 		
 	}
 
@@ -24,7 +27,7 @@
 		<button>account</button>
 		<button>Anfragen</button>
 		<button>Wohnung erstellen</button>
-		<button>Ausloggen</button>
+		<button onclick={log_out}>Ausloggen</button>
 
 	</div>
 
