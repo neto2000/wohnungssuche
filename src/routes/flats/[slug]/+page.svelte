@@ -1,6 +1,16 @@
 <script>
 	
+	import { user_state } from '$lib/store.svelte';
+
 	let {data} = $props()
+
+	function request_flat() {
+
+		if (!user_state.logged_in) {
+
+
+		}
+	}
 
 </script>
 
@@ -27,5 +37,7 @@
 	{/each}
 
 	
+
+	<button>Anfrage</button>
 
 </div>
