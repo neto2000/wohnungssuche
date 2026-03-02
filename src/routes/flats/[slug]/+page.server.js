@@ -18,9 +18,13 @@ export const load = async ({ params }) => {
 
 			const [rows,fields] = await custom_pool.query('SELECT flat.*, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat_id = ?', [id])
 
+			const [paths] = await custom_pool.query('SELECT file_path FROM pictures WHERE flat_id = ?', [id])
+
+			console.log(paths)
+
 			if(rows.length != 0) {
 
-				return rows[0]
+				return {data: rows[0], img_paths: paths}
 			}
 			else {
 

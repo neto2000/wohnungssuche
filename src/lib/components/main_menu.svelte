@@ -26,7 +26,7 @@
 
 		<button>account</button>
 		<button>Anfragen</button>
-		<button>Wohnung erstellen</button>
+		<a class="link" href="/flats/create/">Wohnung inserieren</a>
 		<button onclick={log_out}>Ausloggen</button>
 
 	</div>
@@ -58,6 +58,12 @@
 		
 		height: 100vh;
 		width: 10vw
+	}
+
+	.link {
+
+		color: black;
+		background-color: lightgray;
 	}
 
 </style>

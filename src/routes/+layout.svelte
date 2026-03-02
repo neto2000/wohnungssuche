@@ -16,16 +16,21 @@
 
 
 <header class="head">
-	<p>test</p>
+
+	<a href="/">Test</a>
 	
 	<div>
 
 		{#if !user_state.logged_in}
+
 			<a href="/login">Login</a>
 			<a href="/register">Registrieren</a>
+		{:else}
+
+			<button onclick={() => {menu_visible = true}}>Menu</button>
 		{/if}
+
 		
-		<button onclick={() => {menu_visible = true}}>Menu</button>
 
 	</div>
 
