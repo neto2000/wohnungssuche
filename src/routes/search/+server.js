@@ -20,6 +20,7 @@ export async function POST({request, cookies}) {
 		const [rows,fields] = await custom_pool.query(
 			'SELECT * FROM flat WHERE ? <= price AND price <= ? AND ? <= rooms AND rooms <= ? AND ? <= area AND area <= ? AND ? <= available_from AND available_from <= ? ORDER BY area ASC', [price.ug, price.og,rooms.ug, rooms.og, area.ug, area.og, available_from.ug, available_from.og])
 
+		flats = rows
 	}
 	else if (sort == "price_desc") {
 		const [rows,fields] = await custom_pool.query(
