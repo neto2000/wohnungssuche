@@ -54,7 +54,7 @@
     Area größte
     SELECT * 
     FROM flat 
-    ORDER BY rooms DESC
+    ORDER BY area DESC
     Limit 0 , 20;
      
      
@@ -62,7 +62,7 @@
     Area kleinste
     SELECT * 
     FROM flat 
-    ORDER BY rooms ASC
+    ORDER BY area ASC
     Limit 0 , 20;
      
     Verfügbarkeit früh

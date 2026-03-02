@@ -15,6 +15,8 @@
 	let search_available_from_UG = $state("1970-01-01")
 	let search_available_from_OG = $state("2030-01-01")
 
+	let flats = $state([])
+
 	async function search() {
 
 		const res = await fetch('/search', {
@@ -45,7 +47,7 @@
 					ug: search_available_from_UG,
 					og: search_available_from_OG
 				},
-				sort: "",
+				sort: "area_asc",
 
 			}) 
 		})
@@ -54,6 +56,7 @@
 
 		console.log(data)	
 
+		flats = data.flats
 
 	}
 </script>
@@ -74,7 +77,9 @@
 
 	<div class="flat-list">
 
-		<FlatList title="test" price=20 />
+		{#each flats as flat}
+		<FlatList flat = {flat}/>
+		{/each}
 	</div>
 
 </div>

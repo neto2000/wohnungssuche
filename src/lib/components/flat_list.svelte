@@ -1,14 +1,14 @@
 <script>
 
-	let {title, price} = $props();
+	let {flat} = $props();
 
 </script>
 
 <div class="container">
 
-	<p>{title}</p>
+	<p>{flat.title}</p>
 
-	<p>{price}€</p>
+	<p>{flat.price}€</p>
 
 </div>
 

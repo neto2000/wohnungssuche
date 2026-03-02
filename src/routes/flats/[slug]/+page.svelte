@@ -22,6 +22,10 @@
 
 	<p>vermietet von {data.data.user_name}</p>
 
-	<img src={"/uploads/" + data.img_paths[0].file_path} alt="">
+	{#each data.img_paths as path}
+		<img src={"/uploads/" + path.file_path} alt="">	
+	{/each}
+
+	
 
 </div>

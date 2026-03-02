@@ -17,7 +17,7 @@
 
 <header class="head">
 
-	<a href="/">Test</a>
+	<a href="/">Home</a>
 	
 	<div>
 
@@ -62,7 +62,7 @@
 	margin: 0;
 	padding: 0;
 
-	--bg-color: #444;
+	--bg-color: #f700e2;
 	--fg-color: #ffffff;
 }
 
