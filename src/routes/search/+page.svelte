@@ -47,7 +47,7 @@
 					ug: search_available_from_UG,
 					og: search_available_from_OG
 				},
-				sort: "area_asc",
+				sort: "price_desc",
 
 			}) 
 		})
@@ -78,7 +78,7 @@
 	<div class="flat-list">
 
 		{#each flats as flat}
-		<FlatList flat = {flat}/>
+			<FlatList flat = {flat}/>
 		{/each}
 	</div>
 
@@ -94,6 +94,8 @@
 .flat-list {
 	
 	display: flex;
+
+	flex-direction: column;
 
 	width: 200px;
 }
