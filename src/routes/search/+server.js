@@ -50,7 +50,7 @@ export async function POST({request, cookies}) {
 		const [rows,fields] = await custom_pool.query('SELECT * FROM flat ' + query_conditions + ' ORDER BY created_at ASC', query_data)
 		flats = rows
 	}
-	else if (sort == "available_from_asc") {
+	else if (sort == "available_from_desc") {
 		const [rows,fields] = await custom_pool.query('SELECT * FROM flat ' + query_conditions + ' ORDER BY available_from DESC', query_data)
 		flats = rows
 	}
