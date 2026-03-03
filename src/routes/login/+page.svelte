@@ -45,11 +45,14 @@
 
 
 <div>
-
-	<input type="text" bind:value={email} />
-	<input type="text" bind:value={password} />
 	
-	<button onclick={login}>login</button>
+	<form onsubmit={login}>	
+		<input type="text" bind:value={email} />
+		<input type="text" bind:value={password} />
+	
+		<button type="submit">login</button>
+	</form>
+
 
 	<p style="color: red;">{error_msg}</p>
 </div>
