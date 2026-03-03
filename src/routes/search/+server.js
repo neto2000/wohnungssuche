@@ -12,8 +12,8 @@ export async function POST({request, cookies}) {
 	let flats = []
 
 
-	const query_conditions = 'WHERE ? <= price AND price <= ? AND ? <= rooms AND rooms <= ? AND ? <= area AND area <= ? AND ? <= available_from AND available_from <= ?';
-	let query_data = [price.ug, price.og,rooms.ug, rooms.og, area.ug, area.og, available_from.ug, available_from.og]
+	const query_conditions = 'WHERE ? <= price AND price <= ? AND ? <= rooms AND rooms <= ? AND ? <= area AND area <= ? AND ? <= available_from AND available_from <= ? AND city LIKE ?';
+	let query_data = [price.ug, price.og,rooms.ug, rooms.og, area.ug, area.og, available_from.ug, available_from.og, search_query]
 
 	if (sort== "area_desc") {
 

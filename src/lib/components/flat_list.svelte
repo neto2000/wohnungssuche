@@ -6,9 +6,11 @@
 
 <div class="container">
 
-	<p>{flat.title}</p>
+	<a href={"/flats/" + flat.flat_id}>{flat.title}</a>
 
 	<p>{flat.price}€</p>
+
+	<p>{flat.city}</p>
 
 </div>
 
@@ -17,6 +19,8 @@
 .container {
 
 	display: flex;
+
+	align-items: center;
 	
 	border-style: solid;
 	border-width: 1px;

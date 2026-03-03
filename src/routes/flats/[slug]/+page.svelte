@@ -14,6 +14,10 @@
 
 </script>
 
+<svelte:head>
+	<title>{data.data.title}</title>
+</svelte:head>
+
 <div>
 
 	<p>{data.data.title}</p>

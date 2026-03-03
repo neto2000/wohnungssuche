@@ -1,6 +1,8 @@
 <script>
     import FlatList from "../../lib/components/flat_list.svelte";
 
+	import { onMount } from "svelte";
+
 
 	let search_city = $state("")
 	
@@ -16,6 +18,12 @@
 	let search_available_from_OG = $state("2030-01-01")
 
 	let sort_type = $state("created_at_desc")
+
+
+	onMount(() => {
+		
+		search()
+	})
 
 
 	let flats = $state([])
