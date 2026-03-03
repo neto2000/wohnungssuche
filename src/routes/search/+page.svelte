@@ -2,6 +2,7 @@
     import FlatList from "../../lib/components/flat_list.svelte";
 
 	import { onMount } from "svelte";
+	import { page } from '$app/state';
 
 
 	let search_city = $state("")
@@ -21,6 +22,13 @@
 
 
 	onMount(() => {
+
+		search_city = page.url.searchParams.get("search")
+
+		if (search_city == null) {
+			
+			search_city = ""
+		}
 		
 		search()
 	})
