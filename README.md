@@ -8,9 +8,9 @@
 
   - [x] basic page for a single flat (url arguments for data retrival)
 
-  - [ ] search logic (SQL statements)
+  - [x] search logic (SQL statements)
 
-  - [ ] implement search logic in UI
+  - [x] implement search logic in UI
 
   - [ ] basic list layout for multiple flats
 
@@ -20,8 +20,7 @@
 
   - [ ] start page
 
-  - [ ] let user create a flat
-  - [ ] test
+  - [x] let user create a flat
 
  ## SQL statements
 
