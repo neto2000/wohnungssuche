@@ -1,10 +1,19 @@
 
 import { json } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { custom_pool } from '$lib/server/db';
+import { redirect } from '@sveltejs/kit';
 
 export async function POST({request, cookies}) {
 	
     const {user_id, title, desc, city, address, zip_code, rooms, area, price, created_at, available_from, paths} = await request.json();
+    
+    console.log(cookies.get("id"))
+
+    if (cookies.get("id") == undefined) {
+	console.log("error")
+	error(403)
+    }
 
     try {
 

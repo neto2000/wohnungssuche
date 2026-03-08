@@ -4,9 +4,10 @@
 
 	import {user_state} from '$lib/store.svelte'
 
-	let { children } = $props();
+	let { data, children } = $props();
 
 	let menu_visible = $state(false)
+
 
 </script>
 
@@ -21,7 +22,7 @@
 	
 	<div>
 
-		{#if !user_state.logged_in}
+		{#if data.user_id == null}
 
 			<a href="/login">Login</a>
 			<a href="/register">Registrieren</a>

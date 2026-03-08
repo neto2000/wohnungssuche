@@ -1,7 +1,11 @@
 
-import custom_pool from "../lib/server/db"
 
-export const load = async () => {
+export function load ({cookies}) {
 
-	
+    let id = cookies.get('id')
+
+    return {
+	user_id: id
+    };
+
 }

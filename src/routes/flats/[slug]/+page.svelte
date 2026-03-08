@@ -1,15 +1,45 @@
 <script>
 	
-	import { user_state } from '$lib/store.svelte';
+	import {invalidateAll} from '$app/navigation'
 
 	let {data} = $props()
 
-	function request_flat() {
+	async function favourite() {
+		
+		console.log(data.is_fav)
 
-		if (!user_state.logged_in) {
+		if (data.is_fav) {
+
+			await fetch("/flats/favourites", {
+
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					flat_id: data.data.flat_id
+				})
+
+			})
+		}
+		else {
+			
+			await fetch("/flats/favourites", {
+
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					flat_id: data.data.flat_id
+				})
+
+			})
 
 
 		}
+
+		await invalidateAll()
 	}
 
 </script>
@@ -41,7 +71,10 @@
 	{/each}
 
 	
+	{#if data.logged_in}
+		 
+		<button onclick={favourite}>Favorit</button>
+	{/if}
 
-	<button>Anfrage</button>
 
 </div>

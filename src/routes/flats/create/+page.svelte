@@ -1,18 +1,10 @@
 <script>
 
 	import { user_state } from '$lib/store.svelte';
-    import { onMount } from 'svelte';
 	import { onDestroy } from 'svelte';
 	import {goto} from '$app/navigation'
 
-	onMount(() => {
-
-		if (!user_state.logged_in) {
-			
-			goto("/login")
-		}
-	})
-
+	
 
 	let files = $state()
 	let previewUrl = $state([])
@@ -121,6 +113,13 @@
 				paths: paths
 			}) 
 		})
+
+		console.log(res.status)
+
+		if (res.status == 403) {
+
+			goto("/login")
+		}
 
 	}
 	

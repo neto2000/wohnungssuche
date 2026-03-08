@@ -1,14 +1,21 @@
 <script>
 	
 	import { user_state } from '$lib/store.svelte';
+	import {invalidateAll} from '$app/navigation'
 
 	let {visible = $bindable()} = $props()
 
 
-	function log_out() {
+	async function log_out() {
 		
 		user_state.logged_in = false
 		user_state.user_id = -1
+
+		const res = await fetch("/logout", {
+			method: 'GET'
+		})
+
+		await invalidateAll()
 		
 	}
 
@@ -25,7 +32,7 @@
 		<button onclick={() => {visible = false}}>close</button>
 
 		<button>account</button>
-		<button>Anfragen</button>
+		<a class="link" href="/flats/favourites">Favoriten</a>
 		<a class="link" href="/flats/create/">Wohnung inserieren</a>
 		<button onclick={log_out}>Ausloggen</button>
 

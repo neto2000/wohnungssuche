@@ -13,6 +13,13 @@ export async function POST({request, cookies}) {
 
 		if(rows.length != 0) {
 
+
+			cookies.set('id', rows[0].user_id, {
+				path: '/', 
+				sameSite: 'strict'
+			})
+
+
 			return json({logged_in: true, user_id: rows[0].user_id}, {status: 200})
 		}
 		else {

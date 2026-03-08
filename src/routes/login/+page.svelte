@@ -3,6 +3,8 @@
 
 	import {goto} from '$app/navigation'
 	import { user_state } from '$lib/store.svelte';
+	import {invalidateAll} from '$app/navigation'
+
 
 	let username = $state("Hallo")
 	let email = $state("");
@@ -31,6 +33,8 @@
 
 		user_state.logged_in = data.logged_in
 		user_state.user_id = data.user_id
+
+		await invalidateAll()
 
 		if (data.logged_in) {
 			

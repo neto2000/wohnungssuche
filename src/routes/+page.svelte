@@ -22,6 +22,6 @@
 </form>
 
 <p>Status: {user_state.logged_in}</p>
-<p>ID: {user_state.user_id}</p>
+<p>ID: {data.user_id}</p>
 
 <a href="/login">Login</a>
