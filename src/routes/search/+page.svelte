@@ -19,7 +19,8 @@
 	let search_available_from_OG = $state("2030-01-01")
 
 	let sort_type = $state("created_at_desc")
-
+	
+	let show_filters = $state(false)
 
 	onMount(() => {
 
@@ -90,7 +91,11 @@
 			<p>Stadt:</p>
 
 			<input type="text" bind:value={search_city}>
+
+			<button onclick={() => {show_filters = !show_filters}}>Filters</button>
+	
 		</div>
+		
 
 		
 		<select bind:value={sort_type} onchange={search}>
@@ -114,6 +119,39 @@
 		<button onclick={search}>Suchen</button>
 	</div>
 
+	{#if show_filters}
+	<div class="search-element">
+
+		<p>Preis</p>
+		<input class="filter-input" type="text" bind:value={search_price_UG}>
+		<p>-</p>
+		<input class="filter-input" type="text" bind:value={search_price_OG}>
+
+
+		<p>Fläche</p>
+		<input class="filter-input" type="text" bind:value={search_area_UG}>
+		<p>-</p>
+		<input class="filter-input" type="text" bind:value={search_area_OG}>
+
+
+		<p>Räume</p>
+		<input class="filter-input" type="text" bind:value={search_rooms_UG}>
+		<p>-</p>
+		<input class="filter-input" type="text" bind:value={search_rooms_OG}>
+
+
+		<p>Verfügbar ab</p>
+		<input class="filter-input" type="date" bind:value={search_available_from_UG}>
+		<p>-</p>
+		<input class="filter-input" type="date" bind:value={search_available_from_OG}>
+
+
+		<p>Erstellt am</p>
+		<input class="filter-input" type="date" bind:value={search_created_at_UG}>
+		<p>-</p>
+		<input class="filter-input" type="date" bind:value={search_created_at_OG}>
+	</div>
+	{/if}
 	<div class="flat-list">
 
 		{#each flats as flat}
@@ -141,6 +179,12 @@
 
 .search-element {
 	display: flex;
+}
+
+.filter-input {
+	
+	width: 50px;
+
 }
 
 </style>

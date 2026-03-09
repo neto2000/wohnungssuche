@@ -27,13 +27,16 @@
 
 	<button style="flex-grow: 1; background-color: transparent; border: none; font-size: 0;" onclick={() => {visible = false}}>Escape Menu</button>	
 
-
+	
 	<div class="menu">
-		<button onclick={() => {visible = false}}>close</button>
+		<div>
 
-		<button>account</button>
-		<a class="link" href="/flats/favourites">Favoriten</a>
-		<a class="link" href="/flats/create/">Wohnung inserieren</a>
+			<button onclick={() => {visible = false}}>close</button>
+
+			<a class="link" href="/account">Account</a>
+			<a class="link" href="/flats/favourites">Favoriten</a>
+			<a class="link" href="/flats/create/">Wohnung inserieren</a>
+		</div>
 		<button onclick={log_out}>Ausloggen</button>
 
 	</div>
@@ -61,16 +64,22 @@
 		display: flex;
 		flex-direction: column;
 
-		background-color: black;
+		background-color: white;
 		
 		height: 100vh;
-		width: 10vw
+		width: 20vw
 	}
 
 	.link {
 
 		color: black;
-		background-color: lightgray;
+		background-color: white;
+
+		text-decoration: none;
+
+		margin-top: 10px;
+
+		margin-left: 20px;
 	}
 
 </style>
