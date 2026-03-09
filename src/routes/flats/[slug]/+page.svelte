@@ -64,7 +64,7 @@
 
 	<p>{data.data.zip_code} {data.data.city}</p>
 
-	<p>vermietet von {data.data.user_name}</p>
+	<p>vermietet von {data.data.user_name} erreichbar unter {data.data.email}</p>
 
 	{#each data.img_paths as path}
 		<img src={"/uploads/" + path.file_path} alt="">	

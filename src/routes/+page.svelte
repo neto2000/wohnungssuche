@@ -16,12 +16,76 @@
 	
 </script>
 
-<form onsubmit={(e) => {search(e)}}>
-	<input type="text" bind:value={search_query}>
-	<button type="submit">Suchen</button>
-</form>
+<div class="center">
+<div class="search-container">
 
-<p>Status: {user_state.logged_in}</p>
-<p>ID: {data.user_id}</p>
+	<form onsubmit={(e) => {search(e)}}>
+		<input class="input" placeholder="Stadtname" type="text" bind:value={search_query}>
+		<button class="search" type="submit">Suchen</button>
+	</form>
+</div>
+</div>
 
-<a href="/login">Login</a>
+<style>
+
+.center {
+
+	display: flex;
+
+	justify-content: center;
+
+	align-items: center;
+
+	height: 93vh;
+	
+	background-image: url("/background.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.search-container {
+
+	padding: 8px 8px;
+	
+	border: 0px solid white;
+
+	border-radius: 30px;
+
+	background-color: white;
+
+
+}
+
+.input {
+	
+	border: none;
+
+	margin-left: 12px;
+}
+.input:focus {
+	
+	outline: none;
+}
+
+
+.search {
+	border: 1px solid;
+
+	padding: 8px 20px;
+
+	border-color: purple;
+	background-color: purple;
+	border-radius: 25px;
+
+	color: #ffffff;
+	text-decoration: none;
+
+	font-family: "Google Sans", sans-serif;
+	
+	cursor: pointer;
+
+}
+
+</style>
+

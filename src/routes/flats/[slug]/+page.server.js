@@ -25,7 +25,7 @@ export const load = async ({ cookies, params }) => {
 			}
 
 
-			const [rows,fields] = await custom_pool.query('SELECT flat.*, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat_id = ?', [id])
+			const [rows,fields] = await custom_pool.query('SELECT flat.*, user.email, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat_id = ?', [id])
 
 			const [paths] = await custom_pool.query('SELECT file_path FROM pictures WHERE flat_id = ?', [id])
 

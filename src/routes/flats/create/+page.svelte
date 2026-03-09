@@ -155,10 +155,22 @@
 
 {#each previewUrl as u}
 
-	<img src={u} alt="not loaded">
+	<img class="image" src={u} alt="not loaded">
 {/each}
 
 
 <input type="file" bind:files onchange={() => {display_image()}} accept=".png,.jpg,.webm">
 
 <button onclick={create_flat}>submit</button>
+
+<style>
+	
+.image {
+
+	width: 4vw;
+	height: 4vw;
+
+	object-fit: cover;
+}
+
+</style>
