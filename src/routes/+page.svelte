@@ -28,6 +28,7 @@
 
 <style>
 
+
 .center {
 
 	display: flex;
@@ -36,8 +37,8 @@
 
 	align-items: center;
 
-	height: 93vh;
-	
+	flex-grow: 1;
+
 	background-image: url("/background.jpg");
 	background-position: center;
 	background-repeat: no-repeat;

@@ -55,8 +55,11 @@
 	align-items: center;
 	position: sticky;
 	top: 0;
+
 	height: 7vh;
+	max-height: 70px;
 	padding: 0px 15px;
+
 	background: var(--bg-color);
 	color: var(--fg-color);
 

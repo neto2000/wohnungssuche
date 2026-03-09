@@ -3,6 +3,8 @@
 	import { user_state } from '$lib/store.svelte';
 	import {invalidateAll} from '$app/navigation'
 
+    import Close from './close.svelte';
+
 	let {visible = $bindable()} = $props()
 
 
@@ -29,15 +31,16 @@
 
 	
 	<div class="menu">
-		<div>
-
-			<button onclick={() => {visible = false}}>close</button>
+		<div class="link-container">
+			<div class="close-container">
+				<button class="close" onclick={() => {visible = false}}><Close color={"black"} /></button>
+			</div>
 
 			<a class="link" href="/account">Account</a>
 			<a class="link" href="/flats/favourites">Favoriten</a>
 			<a class="link" href="/flats/create/">Wohnung inserieren</a>
+			<button class="link-button" onclick={log_out}>Ausloggen</button>
 		</div>
-		<button onclick={log_out}>Ausloggen</button>
 
 	</div>
 
@@ -77,9 +80,77 @@
 
 		text-decoration: none;
 
-		margin-top: 10px;
+		margin-top: 30px;
 
 		margin-left: 20px;
+
+		font-size: 20px;
+	}
+
+	.link-button {
+
+		color: black;
+		background-color: white;
+
+		text-decoration: none;
+		border: none;
+
+		padding: 0;
+
+		text-align: start;
+
+		margin-top: 30px;
+
+		margin-left: 20px;
+
+		font-size: 20px;
+
+		cursor: pointer;
+	}
+
+
+	.close {
+
+		display: flex;
+
+		justify-content: center;
+
+		align-items: center;
+
+		border: none;
+
+		background-color: white;
+
+		height: 40px;
+	}
+
+	.close:hover {
+
+		background-color: #eeeeee;
+
+		border-radius: 10px;
+
+		cursor: pointer;
+	}
+
+	.close-container {
+
+		display: flex;
+
+		justify-content: end;
+
+		margin-right: 20px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.link-container {
+
+		display: flex;
+
+		flex-direction: column;
+
+		margin-left: 50px;
 	}
 
 </style>

@@ -6,7 +6,7 @@ import { redirect } from '@sveltejs/kit';
 
 export async function POST({request, cookies}) {
 	
-    const {user_id, title, desc, city, address, zip_code, rooms, area, price, created_at, available_from, paths} = await request.json();
+    const {title, desc, city, address, zip_code, rooms, area, price, created_at, available_from, paths} = await request.json();
     
     console.log(cookies.get("id"))
 
@@ -17,7 +17,7 @@ export async function POST({request, cookies}) {
 
     try {
 
-	    const [result] = await custom_pool.query('INSERT INTO flat (user_id, title, description, city, address, zip_code, rooms, area, price, created_at, available_from) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [user_id, title, desc, city, address, zip_code, rooms, area, price, created_at, available_from])
+	    const [result] = await custom_pool.query('INSERT INTO flat (user_id, title, description, city, address, zip_code, rooms, area, price, created_at, available_from) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [cookies.get("id"), title, desc, city, address, zip_code, rooms, area, price, created_at, available_from])
 	    
 	    const flat_id = result.insertId
 

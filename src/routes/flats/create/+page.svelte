@@ -82,9 +82,18 @@
 	let area = $state(0)
 	let price = $state(0)
 	let available_from = $state("1971-01-01")
+	
 
+	let error = $state("")
 
 	async function create_flat() {
+
+		if (title == "" || city == "" || address == "" || zip_code == "" || rooms == 0 || area == 0) {
+			
+			error = "Fülle jedes Feld aus!"
+
+			return
+		}
 		
 		const paths = await upload_images();	
 		
@@ -99,7 +108,6 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				user_id: user_state.user_id,
 				title: title,
 				desc: desc,
 				city: city,
@@ -120,6 +128,10 @@
 
 			goto("/login")
 		}
+
+		const res_data = await res.json();
+
+		goto("/flats/" + res_data.flat_id)
 
 	}
 	
@@ -160,6 +172,8 @@
 
 
 <input type="file" bind:files onchange={() => {display_image()}} accept=".png,.jpg,.webm">
+
+<p style="color: red;">{error}</p>
 
 <button onclick={create_flat}>submit</button>
 
