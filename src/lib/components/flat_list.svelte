@@ -33,8 +33,8 @@
 	<div class="details-box">
 		
 		<p>{flat.rooms} Räume</p>
-		<p>{flat.area}m²</p>
-		<p>{flat.price}€</p>
+		<p>{flat.area} m²</p>
+		<p>{flat.price} €</p>
 
 	</div>
 
@@ -97,7 +97,7 @@
 
 .image {
 
-	width: 250px;
+	width: 266px;
 	height: 200px;
 
 	object-fit: cover;

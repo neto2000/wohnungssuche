@@ -18,19 +18,15 @@
 
 <div class="center">
 
-	<div class="start">
-<img src="/logobg.png" alt="FlatFinder">
-<div>
-<div class="search-container">
+	<img class="big-logo" src="/logobg.png" alt="FlatFinder">
+	<div class="search-container">
 	
 
-	<form onsubmit={(e) => {search(e)}}>
-		<input class="input" placeholder="Stadtname" type="text" bind:value={search_query}>
-		<button class="search" type="submit">Suchen</button>
-	</form>
-</div>
-</div>
-</div>
+		<form onsubmit={(e) => {search(e)}}>
+			<input class="input" placeholder="Stadtname" type="text" bind:value={search_query}>
+			<button class="search" type="submit">Suchen</button>
+		</form>
+	</div>
 </div>
 
 <style>
@@ -44,6 +40,8 @@
 
 	align-items: center;
 
+	flex-direction: column;
+
 	flex-grow: 1;
 
 	background-image: url("/background.jpg");
@@ -54,6 +52,8 @@
 
 .search-container {
 
+
+
 	padding: 8px 8px;
 	
 	border: 0px solid white;
@@ -62,7 +62,7 @@
 
 	background-color: white;
 
-
+	margin-bottom: 280px;
 }
 
 .input {
@@ -95,12 +95,13 @@
 
 }
 
-.start {
+.big-logo {
 
-display: flex;
-flex-direction: column;
+	height: 160px;
 
+	margin-bottom: 80px;
 }
+
 
 </style>
 

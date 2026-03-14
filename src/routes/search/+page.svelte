@@ -82,88 +82,88 @@
 	}
 </script>
 
-<div>
+<div class="main-container">
 
-	<p>x Wohnungen in Stadt</p>
+	<div class="options-box">	
 
-	<div class="search-container">
-		<div class="search-element">
+		<div class="search-container">
+			<div class="search-element">
 
-			<input class="city-input" type="text" placeholder="Stadt" bind:value={search_city}>
+				<input class="city-input" type="text" placeholder="Stadt" bind:value={search_city}>
 
-			<button class="filter-button" onclick={() => {show_filters = !show_filters}}>Filter</button>
+				<button class="filter-button" onclick={() => {show_filters = !show_filters}}>Filter</button>
+				
+				<button class="search-button" onclick={search}>Suchen</button>
+				
+			</div>
+
+		</div>
+
+		{#if show_filters}
+		<div class="filter-container">
 			
-			<button class="search-button" onclick={search}>Suchen</button>
-	
+			<div class="filter-abschnitt">
+				<p>Preis: </p>
+				<input class="filter-input" type="text" bind:value={search_price_UG}>
+				<p>-</p>
+				<input class="filter-input" type="text" bind:value={search_price_OG}>
+			</div>
+
+
+			<div class="filter-abschnitt">
+				<p>Fläche: </p>
+				<input class="filter-input" type="text" bind:value={search_area_UG}>
+				<p>-</p>
+				<input class="filter-input" type="text" bind:value={search_area_OG}>
+			</div>
+
+
+			<div class="filter-abschnitt">
+				<p>Räume: </p>
+				<input class="filter-input" type="text" bind:value={search_rooms_UG}>
+				<p>-</p>
+				<input class="filter-input" type="text" bind:value={search_rooms_OG}>
+			</div>
+
+
+			<div class="filter-abschnitt">
+				<p>Verfügbar ab: </p>
+				<input class="filter-input" style="width: 110px;" type="date" bind:value={search_available_from_UG}>
+				<p>-</p>
+				<input class="filter-input" style="width: 110px;" type="date" bind:value={search_available_from_OG}>
+			</div>
+
+
+			<div class="filter-abschnitt">
+				<p>Erstellt am: </p>
+				<input class="filter-input" style="width: 110px;" type="date" bind:value={search_created_at_UG}>
+				<p>-</p>
+				<input class="filter-input" style="width: 110px;" type="date" bind:value={search_created_at_OG}>
+			</div>
 		</div>
-		
+		{/if}
 
-		
-		
+		<div style="display: flex; flex: 0 0 auto; justify-content: space-between;">
+			<select class="select" bind:value={sort_type} onchange={search}>
+				<option value="price_asc">Preis aufsteigend</option>
+				<option value="price_desc">Preis absteigend</option>
 
+				<option value="rooms_asc">Räume aufsteigend</option>
+				<option value="rooms_asc">Räume absteigend</option>
+
+				<option value="area_asc">Fläche aufsteigend</option>
+				<option value="area_desc">Fläche absteigend</option>
+
+				<option value="created_at_asc">Erstellt am aufsteigend</option>
+				<option value="created_at_desc">Erstellt am absteigend</option>
+
+				<option value="available_from_asc">Beziehbar ab aufsteigend</option>
+				<option value="available_from_desc">Beziehbar ab absteigend</option>
+			</select>
+			
+			<p class="flat-count">{flats.length} Wohnungen gefunden</p>
+		</div>
 	</div>
-
-	{#if show_filters}
-	<div class="filter-container">
-		
-		<div class="filter-abschnitt">
-			<p>Preis: </p>
-			<input class="filter-input" type="text" bind:value={search_price_UG}>
-			<p>-</p>
-			<input class="filter-input" type="text" bind:value={search_price_OG}>
-		</div>
-
-
-		<div class="filter-abschnitt">
-			<p>Fläche: </p>
-			<input class="filter-input" type="text" bind:value={search_area_UG}>
-			<p>-</p>
-			<input class="filter-input" type="text" bind:value={search_area_OG}>
-		</div>
-
-
-		<div class="filter-abschnitt">
-			<p>Räume: </p>
-			<input class="filter-input" type="text" bind:value={search_rooms_UG}>
-			<p>-</p>
-			<input class="filter-input" type="text" bind:value={search_rooms_OG}>
-		</div>
-
-
-		<div class="filter-abschnitt">
-			<p>Verfügbar ab: </p>
-			<input class="filter-input" type="date" bind:value={search_available_from_UG}>
-			<p>-</p>
-			<input class="filter-input" type="date" bind:value={search_available_from_OG}>
-		</div>
-
-
-		<div class="filter-abschnitt">
-			<p>Erstellt am: </p>
-			<input class="filter-input" type="date" bind:value={search_created_at_UG}>
-			<p>-</p>
-			<input class="filter-input" type="date" bind:value={search_created_at_OG}>
-		</div>
-	</div>
-	{/if}
-
-
-	<select class="select" bind:value={sort_type} onchange={search}>
-		<option value="price_asc">Preis aufsteigend</option>
-		<option value="price_desc">Preis absteigend</option>
-
-		<option value="rooms_asc">Räume aufsteigend</option>
-		<option value="rooms_asc">Räume absteigend</option>
-
-		<option value="area_asc">Fläche aufsteigend</option>
-		<option value="area_desc">Fläche absteigend</option>
-
-		<option value="created_at_asc">Erstellt am aufsteigend</option>
-		<option value="created_at_desc">Erstellt am absteigend</option>
-
-		<option value="available_from_asc">Beziehbar ab aufsteigend</option>
-		<option value="available_from_desc">Beziehbar ab absteigend</option>
-	</select>
 
 	<div class="flat-list">
 
@@ -176,22 +176,41 @@
 
 <style>
 
+.main-container {
+
+	display: flex;
+
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+}
+
+.options-box {
+
+	width: 61vw;
+
+	margin-top: 65px;
+}
+
 .search-container {
 	
 	display: flex;
 
-	margin-left: 7vw;
+	/* margin-left: 7vw; */
 
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 .filter-container {
 	
 	display: flex;
 
-	margin-left: 7vw;
+	/* margin-left: 7vw; */
 
-	margin-bottom: 20px;
+	align-items: center;
+
+	margin-bottom: 15px;
 
 	gap: 10px;
 }
@@ -200,12 +219,27 @@
 
 	display: flex;
 
+	align-items: center;
+
 }
 
 
 .select {
+	
+	background-color: white;
+	
+	border: 1px solid #aaaaaa;
 
-	margin-left: 7vw;
+	border-radius: 8px;
+
+	height: 30px;
+	
+	padding: 4px;
+
+	color: #555555;
+
+	cursor: pointer;
+
 }
 
 .flat-list {
@@ -216,12 +250,12 @@
 
 	flex-direction: column;
 
-	width: 50vw;
+	width: 60vw;
 
-	margin-top: 40px;
-	margin-left: 10vw;
+	margin-top: 30px;
+	margin-bottom: 80px;
 
-	gap: 10px;
+	gap: 15px;
 }
 
 .search-element {
@@ -247,7 +281,11 @@
 
 	padding: 10px;
 
-	width: 50px;
+	width: 60px;
+
+	height: 20px;
+
+	margin: 0px 6px;
 
 }
 
@@ -286,6 +324,13 @@
 
 	font-family: "Google Sans", sans-serif;
 
+}
+
+.flat-count {
+
+	color: #666666;
+
+	font-size: 14px;
 }
 
 

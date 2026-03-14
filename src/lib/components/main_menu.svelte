@@ -31,7 +31,7 @@
 <div class="float">
 	
 
-	<button style="flex-grow: 1; background-color: transparent; border: none; font-size: 0;" onclick={() => {visible = false}}>Escape Menu</button>	
+	<button style="flex-grow: 1; background-color: rgba(0,0,0,0.1); border: none; font-size: 0;" onclick={() => {visible = false}}>Escape Menu</button>	
 
 	
 	<div class="menu">
