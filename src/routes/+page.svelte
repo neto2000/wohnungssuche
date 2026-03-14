@@ -17,12 +17,19 @@
 </script>
 
 <div class="center">
+
+	<div class="start">
+<img src="/logobg.png" alt="FlatFinder">
+<div>
 <div class="search-container">
+	
 
 	<form onsubmit={(e) => {search(e)}}>
 		<input class="input" placeholder="Stadtname" type="text" bind:value={search_query}>
 		<button class="search" type="submit">Suchen</button>
 	</form>
+</div>
+</div>
 </div>
 </div>
 
@@ -85,6 +92,13 @@
 	font-family: "Google Sans", sans-serif;
 	
 	cursor: pointer;
+
+}
+
+.start {
+
+display: flex;
+flex-direction: column;
 
 }
 

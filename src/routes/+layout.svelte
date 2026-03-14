@@ -19,7 +19,7 @@
 
 <header class="head">
 
-	<a href="/">Home</a>
+	<a href="/"><img class="logo" src="/logo.webp" alt="FlatFinder"></a>
 	
 	<div>
 
@@ -126,6 +126,13 @@
 
 	--bg-color: #ffffff;
 	--fg-color: #ffffff;
+}
+
+.logo {
+
+height: 60px;
+width: auto;
+
 }
 
 </style>
