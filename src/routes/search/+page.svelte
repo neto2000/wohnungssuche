@@ -10,7 +10,7 @@
 	let search_area_UG = $state(0)
 	let search_area_OG = $state(10000) 
 	let search_price_UG = $state(0)
-	let search_price_OG = $state(100000)
+	let search_price_OG = $state(5000000)
 	let search_rooms_UG = $state(0)
 	let search_rooms_OG = $state(100)
 	let search_created_at_UG = $state("1970-01-01")
@@ -169,12 +169,19 @@
 }
 
 .flat-list {
+
+	align-items: center;
 	
 	display: flex;
 
 	flex-direction: column;
 
-	width: 200px;
+	width: 70vw;
+
+	margin-top: 40px;
+	margin-left: 40px;
+
+	gap: 10px;
 }
 
 .search-element {

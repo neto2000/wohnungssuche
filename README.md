@@ -16,9 +16,11 @@
 
   - [ ] account page
 
-  - [ ] Requests
+  - [ ] Title on start page
 
-  - [ ] start page
+  - [x] Requests
+
+  - [x] start page
 
   - [x] let user create a flat
 
