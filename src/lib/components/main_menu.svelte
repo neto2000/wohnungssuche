@@ -19,6 +19,7 @@
 
 		await invalidateAll()
 		
+		visible = false
 	}
 
 </script>
