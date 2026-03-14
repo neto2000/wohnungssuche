@@ -88,9 +88,8 @@
 
 	<div class="search-container">
 		<div class="search-element">
-			<p>Stadt:</p>
 
-			<input type="text" bind:value={search_city}>
+			<input class="city-input" type="text" placeholder="Stadt" bind:value={search_city}>
 
 			<button onclick={() => {show_filters = !show_filters}}>Filters</button>
 	
@@ -166,6 +165,8 @@
 .search-container {
 	
 	display: flex;
+
+	margin-left: 6vw;
 }
 
 .flat-list {
@@ -176,16 +177,26 @@
 
 	flex-direction: column;
 
-	width: 70vw;
+	width: 50vw;
 
 	margin-top: 40px;
-	margin-left: 40px;
+	margin-left: 10vw;
 
 	gap: 10px;
 }
 
 .search-element {
 	display: flex;
+}
+
+
+.city-input {
+
+	border-radius: 20px;
+
+	border: 1px solid black;
+
+	padding: 10px
 }
 
 .filter-input {

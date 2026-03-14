@@ -53,13 +53,13 @@
 	
 	border-style: solid;
 	border-width: 1px;
-	border-radius: 10px;
+	border-radius: 20px;
 
 	width: 100%;
 
 	padding: 10px;
 
-	gap: 50px;
+	gap: 70px;
 
 }
 
@@ -89,16 +89,20 @@
 
 	font-size: 15px;
 	
+	color: #666666;
+
 	margin-top: 30px;
 }
 
 
 .image {
 
-	width: 200px;
+	width: 250px;
 	height: 200px;
 
 	object-fit: cover;
+
+	border-radius: 10px;
 }
 
 
