@@ -58,7 +58,7 @@
 
 	height: 7vh;
 	max-height: 70px;
-	min-height: 70px;
+	min-height: 68px;
 	padding: 0px 15px;
 
 	background: var(--bg-color);
