@@ -41,7 +41,7 @@
 			goto('/')
 		}
 
-		error_msg = "wrong email or password"	
+		error_msg = "Falsche Email oder Passwort!"	
 
 	}
 
@@ -55,7 +55,7 @@
 
 	
 	<form class="container" onsubmit={login}>	
-		<div><p class="überschrift">Log in to FlatFinder</p></div>
+		<div><p class="überschrift">Einloggen bei FlatFinder</p></div>
 		<div class="text-container"><p class="texte">E-Mail</p></div>
 		<input class="eingabe" type="text" bind:value={email} />
 		<div class="text-container"><p class="texte">Passwort</p></div>
@@ -96,20 +96,23 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 padding: 50px;
+border-radius: 15px;
+
 
 }
 
 .text-container {
 
-width: 308px;
+width: 350px;
 
 }
 
 .eingabe {
 
-width: 300px;
+width: 342px;
 height: 30px;
 margin-bottom: 15px;
+
 
 
 }
@@ -117,7 +120,7 @@ margin-bottom: 15px;
 .überschrift {
 
 font-size: 30px;
-width: 308px;
+width: 350px;
 height: auto;
 margin: 0px;
 margin-bottom: 30px;
@@ -129,13 +132,14 @@ margin-bottom: 30px;
 
 margin: 0px;
 font-size: 15px;
+margin-bottom: 3px;
 
 }
 
 .bestätigen {
 
-width: 308px;
-background-color: rgb(15, 15, 116);
+width: 350px;
+background-color: purple;
 color: white;
 border: none;
 padding: 10px;
@@ -146,7 +150,7 @@ font-size: 15px;
 
 .registrieren {
 
-width: 308px;
+width: 350px;
 font-size: 15px;
 align-items: center;
 justify-content: center;

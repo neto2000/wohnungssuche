@@ -60,21 +60,117 @@
 
 </script>
 
+<div class="background">
 
-<div>
+<div class="container">
 	
-	<p>Name:</p>
-	<input type="text" bind:value={name}>
-	<p>Email:</p>
-	<input type="text" bind:value={email}>
+	<div><p class="überschrift"> Registrieren bei FlatFinder</p></div>
+	<div class="text-container"><p class="texte">Benutzername:</p></div>
+	<input class="eingabe" type="text" bind:value={name}>
+	<div class="text-container"><p class="texte">Email:</p></div>
+	<input class="eingabe" type="text" bind:value={email}>
 
-	<p>Passwort:</p>
-	<input type="text" bind:value={password}>
-	<p>Passwort wiederholen:</p>
-	<input type="text" bind:value={password2}>
+	<div class="text-container"><p class="texte">Passwort:</p></div>
+	<input class="eingabe" type="text" bind:value={password}>
+	<div class="text-container"><p class="texte">Passwort wiederholen:</p></div>
+	<input class="eingabe" type="text" bind:value={password2}>
 	
-	<button onclick={register}>Registrieren</button>
+	<button class="bestätigen" onclick={register}>Registrieren</button>
+
+	<div><p class="registrieren">Bereits registriert? <a class="loginlink" href="/login">Einloggen</a></p></div>
 
 	<p style="color: red;">{msg}</p>
+
 </div>
+
+</div>
+
+<style>
+
+.background {
+
+background-color: blueviolet;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.container {
+
+background-color: white;
+width: auto;
+height: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 50px;rgb(15, 15, 116);
+border-radius: 15px;
+
+}
+
+.text-container {
+
+width: 358px;
+
+}
+
+.eingabe {
+
+width: 350px;
+height: 30px;
+margin-bottom: 15px;
+
+
+}
+
+.überschrift {
+
+font-size: 30px;
+width: 358px;
+height: auto;
+margin: 0px;
+margin-bottom: 30px;
+
+
+}
+
+.texte {
+
+margin: 0px;
+font-size: 15px;
+
+}
+
+.bestätigen {
+
+width: 358px;
+background-color: purple;
+color: white;
+border: none;
+padding: 10px;
+font-size: 15px;
+
+
+}
+
+.registrieren {
+
+width: 358px;
+font-size: 15px;
+align-items: center;
+justify-content: center;
+
+}
+
+
+.loginlink {
+
+margin-left: 5px;
+
+}
+
+</style>
 
