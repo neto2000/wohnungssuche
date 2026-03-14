@@ -17,7 +17,7 @@ export async function POST({request, cookies}) {
 
 	if (sort== "area_desc") {
 
-		const [rows,fields] = await custom_pool.query('SELECT * FROM flat ' + query_conditions + ' ORDER BY area DESC', query_data)
+		const [rows,fields] = await custom_pool.query('SELECT flat.*,pictures.* FROM flat ' + query_conditions + ' ORDER BY area DESC', query_data)
 		
 		flats = rows
 	}

@@ -2,6 +2,7 @@
 	
 	import { user_state } from '$lib/store.svelte';
 	import {invalidateAll} from '$app/navigation'
+	import {goto} from '$app/navigation'
 
     import Close from './close.svelte';
 
@@ -20,6 +21,8 @@
 		await invalidateAll()
 		
 		visible = false
+
+		goto("/")
 	}
 
 </script>

@@ -91,66 +91,80 @@
 
 			<input class="city-input" type="text" placeholder="Stadt" bind:value={search_city}>
 
-			<button onclick={() => {show_filters = !show_filters}}>Filters</button>
+			<button class="filter-button" onclick={() => {show_filters = !show_filters}}>Filter</button>
+			
+			<button class="search-button" onclick={search}>Suchen</button>
 	
 		</div>
 		
 
 		
-		<select bind:value={sort_type} onchange={search}>
-			<option value="price_asc">Preis aufsteigend</option>
-			<option value="price_desc">Preis absteigend</option>
+		
 
-			<option value="rooms_asc">Räume aufsteigend</option>
-			<option value="rooms_asc">Räume absteigend</option>
-
-			<option value="area_asc">Fläche aufsteigend</option>
-			<option value="area_desc">Fläche absteigend</option>
-
-			<option value="created_at_asc">Erstellt am aufsteigend</option>
-			<option value="created_at_desc">Erstellt am absteigend</option>
-
-			<option value="available_from_asc">Beziehbar ab aufsteigend</option>
-			<option value="available_from_desc">Beziehbar ab absteigend</option>
-		</select>
-
-
-		<button onclick={search}>Suchen</button>
 	</div>
 
 	{#if show_filters}
-	<div class="search-element">
-
-		<p>Preis</p>
-		<input class="filter-input" type="text" bind:value={search_price_UG}>
-		<p>-</p>
-		<input class="filter-input" type="text" bind:value={search_price_OG}>
-
-
-		<p>Fläche</p>
-		<input class="filter-input" type="text" bind:value={search_area_UG}>
-		<p>-</p>
-		<input class="filter-input" type="text" bind:value={search_area_OG}>
+	<div class="filter-container">
+		
+		<div class="filter-abschnitt">
+			<p>Preis: </p>
+			<input class="filter-input" type="text" bind:value={search_price_UG}>
+			<p>-</p>
+			<input class="filter-input" type="text" bind:value={search_price_OG}>
+		</div>
 
 
-		<p>Räume</p>
-		<input class="filter-input" type="text" bind:value={search_rooms_UG}>
-		<p>-</p>
-		<input class="filter-input" type="text" bind:value={search_rooms_OG}>
+		<div class="filter-abschnitt">
+			<p>Fläche: </p>
+			<input class="filter-input" type="text" bind:value={search_area_UG}>
+			<p>-</p>
+			<input class="filter-input" type="text" bind:value={search_area_OG}>
+		</div>
 
 
-		<p>Verfügbar ab</p>
-		<input class="filter-input" type="date" bind:value={search_available_from_UG}>
-		<p>-</p>
-		<input class="filter-input" type="date" bind:value={search_available_from_OG}>
+		<div class="filter-abschnitt">
+			<p>Räume: </p>
+			<input class="filter-input" type="text" bind:value={search_rooms_UG}>
+			<p>-</p>
+			<input class="filter-input" type="text" bind:value={search_rooms_OG}>
+		</div>
 
 
-		<p>Erstellt am</p>
-		<input class="filter-input" type="date" bind:value={search_created_at_UG}>
-		<p>-</p>
-		<input class="filter-input" type="date" bind:value={search_created_at_OG}>
+		<div class="filter-abschnitt">
+			<p>Verfügbar ab: </p>
+			<input class="filter-input" type="date" bind:value={search_available_from_UG}>
+			<p>-</p>
+			<input class="filter-input" type="date" bind:value={search_available_from_OG}>
+		</div>
+
+
+		<div class="filter-abschnitt">
+			<p>Erstellt am: </p>
+			<input class="filter-input" type="date" bind:value={search_created_at_UG}>
+			<p>-</p>
+			<input class="filter-input" type="date" bind:value={search_created_at_OG}>
+		</div>
 	</div>
 	{/if}
+
+
+	<select class="select" bind:value={sort_type} onchange={search}>
+		<option value="price_asc">Preis aufsteigend</option>
+		<option value="price_desc">Preis absteigend</option>
+
+		<option value="rooms_asc">Räume aufsteigend</option>
+		<option value="rooms_asc">Räume absteigend</option>
+
+		<option value="area_asc">Fläche aufsteigend</option>
+		<option value="area_desc">Fläche absteigend</option>
+
+		<option value="created_at_asc">Erstellt am aufsteigend</option>
+		<option value="created_at_desc">Erstellt am absteigend</option>
+
+		<option value="available_from_asc">Beziehbar ab aufsteigend</option>
+		<option value="available_from_desc">Beziehbar ab absteigend</option>
+	</select>
+
 	<div class="flat-list">
 
 		{#each flats as flat}
@@ -166,7 +180,32 @@
 	
 	display: flex;
 
-	margin-left: 6vw;
+	margin-left: 7vw;
+
+	margin-bottom: 20px;
+}
+
+.filter-container {
+	
+	display: flex;
+
+	margin-left: 7vw;
+
+	margin-bottom: 20px;
+
+	gap: 10px;
+}
+
+.filter-abschnitt {
+
+	display: flex;
+
+}
+
+
+.select {
+
+	margin-left: 7vw;
 }
 
 .flat-list {
@@ -187,6 +226,8 @@
 
 .search-element {
 	display: flex;
+
+	gap: 18px;
 }
 
 
@@ -196,13 +237,56 @@
 
 	border: 1px solid black;
 
-	padding: 10px
+	padding: 10px;
 }
 
 .filter-input {
-	
+	border-radius: 20px;
+
+	border: 1px solid black;
+
+	padding: 10px;
+
 	width: 50px;
 
 }
+
+.search-button {
+
+	border: 1px solid;
+
+	padding: 8px 20px;
+
+	border-color: purple;
+	background-color: purple;
+	border-radius: 25px;
+
+	color: #ffffff;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	font-family: "Google Sans", sans-serif;
+
+}
+.filter-button {
+
+	border: 1px solid;
+
+	padding: 8px 20px;
+
+	border-color: black;
+	background-color: white;
+	border-radius: 25px;
+
+	color: black;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	font-family: "Google Sans", sans-serif;
+
+}
+
 
 </style>
