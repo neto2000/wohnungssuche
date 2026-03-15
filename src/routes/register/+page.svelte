@@ -63,7 +63,7 @@
 
 </script>
 
-<div class="background">
+<div class="center">
 
 <div class="container">
 	
@@ -90,14 +90,22 @@
 
 <style>
 
-.background {
+.center {
 
-background-color: blueviolet;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
+	display: flex;
 
+	justify-content: center;
+
+	align-items: center;
+
+	flex-direction: column;
+
+	flex-grow: 1;
+
+	background-image: url("/background.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .container {
@@ -109,7 +117,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-padding: 50px;rgb(15, 15, 116);
+padding: 50px;
 border-radius: 15px;
 
 }

@@ -48,7 +48,7 @@
 </script>
 
 
-<div class="background">
+<div class="center">
 
 
 
@@ -76,14 +76,22 @@
 
 <style>
 
-.background {
+.center {
 
-background-color: blueviolet;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
+	display: flex;
 
+	justify-content: center;
+
+	align-items: center;
+
+	flex-direction: column;
+
+	flex-grow: 1;
+
+	background-image: url("/background.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .container {
