@@ -44,13 +44,13 @@
 
 		if (old_password == "" || new_password == "") {
 
-			error_msg = "ungültiges Passwort"
+			error_msg = "Passwort wurde bereits verwendet!"
 			return
 		}
 
 		if (new_password != new_password2) {
 
-			error_msg = "ungültiges Passwort"
+			error_msg = "Neues Passwort nicht bestätigt!"
 			return
 		}
 
@@ -73,9 +73,9 @@
 			return
 		}
 		
-		error_msg = ""
+		error_msg = "Passwort wurde geändert!"
 
-		goto("/")
+		
 	}
 
 	async function remove_flat(id) {
@@ -142,10 +142,12 @@
 
         </div>
 
+        <div class="wohnung">
+
         <div>Meine Wohnungen</div>
 
 
-        <button onclick={() => {show_flats = !show_flats}}>
+        <button class="ausklappen" onclick={() => {show_flats = !show_flats}}>
             
             {#if show_flats}
             
@@ -159,16 +161,20 @@
         
         </button>
 
+        </div>
+
         {#if show_flats && !(data.flats[0].flat_id == undefined)}
             
 
         {#each data.flats as flat}
 
-        <div class="grid-flat"></div>
+        <div class="grid-flat">
 
         <div><a href={"/flats/" + flat.flat_id}>{flat.title}</a></div>
         <div><p>{flat.address}, {flat.city}</p></div>
         <button class="update" onclick={() => {remove_flat(flat.flat_id)}}>Löschen</button>
+
+        </div>
             
         {/each}
        
@@ -309,13 +315,27 @@ border-radius: 20px;
 .grid-flat {
 
 display: grid;
-grid-template-columns: 34% 33% 33%;
+grid-template-columns: 45% 40% 15%;
 grid-gap: 20px;
 grid-column-gap: 10px;
 
 margin-bottom: 30px;
 
 align-items: center;
+
+}
+
+.wohnung {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.ausklappen {
+
+ margin-left: 20px;
 
 }
 

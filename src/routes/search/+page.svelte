@@ -149,7 +149,7 @@
 				<option value="price_desc">Preis absteigend</option>
 
 				<option value="rooms_asc">Räume aufsteigend</option>
-				<option value="rooms_asc">Räume absteigend</option>
+				<option value="rooms_desc">Räume absteigend</option>
 
 				<option value="area_asc">Fläche aufsteigend</option>
 				<option value="area_desc">Fläche absteigend</option>
