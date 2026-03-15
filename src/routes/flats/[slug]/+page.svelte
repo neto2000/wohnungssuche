@@ -277,6 +277,7 @@
 .request-button {
 
 	margin-top: 15px;
+	margin-bottom: 50px;
 
 	width: 100%;
 	height: 40px;
