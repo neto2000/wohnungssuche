@@ -1,6 +1,8 @@
 <script>
 	
 	import {invalidateAll} from '$app/navigation'
+	import {goto} from '$app/navigation'
+
     import Heart from '../../../lib/components/heart.svelte';
 
 	let {data} = $props()
@@ -43,6 +45,29 @@
 		}
 
 		await invalidateAll()
+	}
+
+	async function request_conversation() {
+
+		const res = await fetch("/conversations/request", {
+
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				flat_id: data.data.flat_id
+			})
+
+		})
+		
+		if (res.status != 200) {
+
+			return
+		}
+
+		goto("/conversations")
+
 	}
 
 	function next_picture(value) {
@@ -128,6 +153,7 @@
 					{#if data.logged_in}
 				 
 						<button class="heart-button" onclick={favourite}><Heart filled={data.is_fav} /></button>
+					
 					{/if}
 
 				</div>
@@ -135,8 +161,11 @@
 
 
 
-			<button class="request-button">Anfragen</button>
+			{#if data.logged_in}
+				
+				<button class="request-button" onclick={request_conversation}>Anfragen</button>
 			
+			{/if}
 			
 
 		</div>
