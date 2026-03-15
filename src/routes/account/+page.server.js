@@ -15,7 +15,15 @@ export const load = async ({ cookies }) => {
 
     try {
 
-        const [rows, fields] = await custom_pool.query('SELECT flat.flat_id, flat.title, flat.address, flat.city, user.email, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat.user_id = ?', [user])
+        let [rows, fields] = await custom_pool.query('SELECT flat.flat_id, flat.title, flat.address, flat.city, user.email, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat.user_id = ?', [user])
+
+        if (rows.length == 0) {
+
+
+            let [rows2, f] = await custom_pool.query('SELECT user.email, user.user_name FROM user WHERE user_id = ?', [user])
+
+            rows = rows2
+        }
 
         return {
 

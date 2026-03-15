@@ -14,55 +14,15 @@ export const load = async ({ cookies, url }) => {
 
     if (url.searchParams.has("vermieter")) {
 
-	const [rows,fields] = await custom_pool.query('SELECT * FROM conversation WHERE user_id = ?', [id])
+	const [rows,fields] = await custom_pool.query('SELECT conversation.*, conversation.user_id as reciever FROM conversation INNER JOIN flat ON conversation.flat_id = flat.flat_id WHERE flat.user_id = ?', [user])
 	    
-
-	    try {
-
-		    let logged_in = false
-
-		    if (cookies.get("id") != undefined) {
-
-			    logged_in = true
-		    }
-
-
-		    const [rows,fields] = await custom_pool.query('SELECT flat.*, user.email, user.user_name FROM flat INNER JOIN user ON flat.user_id = user.user_id WHERE flat_id = ?', [id])
-
-		    const [paths] = await custom_pool.query('SELECT file_path FROM pictures WHERE flat_id = ?', [id])
-
-
-		    const [favourite] = await custom_pool.query('SELECT * FROM favourite WHERE flat_id = ? AND user_id = ?', [id, cookies.get("id")])
-
-		    console.log(paths)
-
-		    let is_favourite = false
-
-		    if (favourite.length != 0) {
-			    is_favourite = true
-		    }
-
-		    if(rows.length != 0) {
-
-			    return {data: rows[0], img_paths: paths, is_fav: is_favourite, logged_in: logged_in}
-		    }
-		    else {
-
-			    throw new Error("result is empty")
-		    }
-
-	    }
-	    catch(e) {
-
-		    console.log(e)
-		    
-		    error(404, 'Not Found')	
-
-	    }
-
+	    
+	return {conversations: rows}
     }
 
-    const [rows,fields] = await custom_pool.query('SELECT * FROM conversation WHERE user_id = ?', [user])
+    const [rows,fields] = await custom_pool.query('SELECT conversation.*, flat.user_id as reciever FROM conversation INNER JOIN flat ON conversation.flat_id = flat.flat_id WHERE conversation.user_id = ?', [user])
+
+    console.log(rows)
 
     return {conversations: rows}
 }

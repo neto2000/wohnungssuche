@@ -1,6 +1,6 @@
 import { eventHub } from "$lib/server/event_handler";
 
-export function GET() {
+export function GET({cookies}) {
 
     let connected = true
 
@@ -8,14 +8,17 @@ export function GET() {
 	start(controller) {
 	    const handler = (data) => {
 
-		if (connected) {
-		    try {
+		if (cookies.get("id") == data.user || cookies.get("id") == data.reciever) {
 
-			controller.enqueue(`data: ${JSON.stringify(data)}\n\n`);
-		    }
-		    catch (e) {
-			console.error("Failed to enqueue, closing connection:", e);
-			cleanup();
+		    if (connected) {
+			try {
+
+			    controller.enqueue(`data: ${JSON.stringify(data)}\n\n`);
+			}
+			catch (e) {
+			    console.error("Failed to enqueue, closing connection:", e);
+			    cleanup();
+			}
 		    }
 		}
 	    };

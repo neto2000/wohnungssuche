@@ -159,7 +159,7 @@
         
         </button>
 
-        {#if show_flats}
+        {#if show_flats && !(data.flats[0].flat_id == undefined)}
             
 
         {#each data.flats as flat}
