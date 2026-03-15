@@ -3,6 +3,7 @@ CREATE TABLE user (
     user_name varchar(255),
     password varchar(255),
     email varchar(255) UNIQUE,
+    last_active_at TIMESTAMP,
     PRIMARY KEY (user_id)
 );
 
@@ -33,17 +34,30 @@ CREATE TABLE pictures (
     FOREIGN KEY(flat_id) REFERENCES flat(flat_id)
 );
 
-CREATE TABLE request (
-    user_id INT NOT NULL,
-    flat_id INT NOT NULL,
-    request_date TIMESTAMP,
-    message varchar(255),
+CREATE TABLE conversation (
+    conversation_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT,
+    flat_id INT,
+    last_msg_at TIMESTAMP,
 
-    PRIMARY KEY(user_id, flat_id),
+    PRIMARY KEY(conversation_id),
 
     FOREIGN KEY(user_id) REFERENCES user(user_id),
     FOREIGN KEY(flat_id) REFERENCES flat(flat_id)
 
+);
+
+CREATE TABLE message (
+    msg_id INT NOT NULL AUTO_INCREMENT,
+    conversation_id INT,
+    sender_id INT,
+    message varchar(255),
+    created_at TIMESTAMP,
+
+    PRIMARY KEY(msg_id),
+
+    FOREIGN KEY(conversation_id) REFERENCES conversation(conversation_id),
+    FOREIGN KEY(sender_id) REFERENCES user(user_id)
 );
 
 CREATE TABLE favourite (
