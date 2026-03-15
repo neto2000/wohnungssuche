@@ -12,11 +12,11 @@
 
   - [x] implement search logic in UI
 
-  - [ ] basic list layout for multiple flats
+  - [x] basic list layout for multiple flats
 
   - [ ] account page
 
-  - [ ] Title on start page
+  - [x] Title on start page
 
   - [x] Requests
 

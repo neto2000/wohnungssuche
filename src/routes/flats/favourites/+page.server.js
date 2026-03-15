@@ -16,8 +16,10 @@ export const load = async ({ cookies }) => {
 
 
 	try {
+		
+		const query = 'SELECT flat.*, pictures.file_path FROM (SELECT flat.* FROM flat INNER JOIN favourite ON flat.flat_id = favourite.flat_id WHERE favourite.user_id = ?) flat LEFT OUTER JOIN (SELECT flat_id, MIN(file_path) as file_path FROM pictures GROUP BY flat_id) pictures ON flat.flat_id = pictures.flat_id'
 
-		const [rows,fields] = await custom_pool.query('SELECT flat.* FROM flat INNER JOIN favourite ON flat.flat_id = favourite.flat_id WHERE favourite.user_id = ?', [id])
+		const [rows,fields] = await custom_pool.query(query, [id])
 
 
 		if(rows.length != 0) {

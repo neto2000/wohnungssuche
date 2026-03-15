@@ -80,7 +80,14 @@
 
 		<button class="arrow-button" onclick={() => {next_picture(-1)}}>&lt;</button>
 
-			<img class="image" src={"/uploads/" + data.img_paths[current_image].file_path} alt="">	
+			{#if data.img_paths.length == 0}
+				 
+				<img class="image" src="https://placehold.jp/1920x1080.png" alt="">
+			{:else}
+				 
+				<img class="image" src={"/uploads/" + data.img_paths[current_image].file_path} alt="">	
+			{/if}
+
 
 		<button class="arrow-button" onclick={() => {next_picture(1)}}>&gt;</button>
 	</div>
@@ -91,7 +98,6 @@
 
 			<p class="title">{data.data.title}</p>
 			
-			<p>{data.data.address}, {data.data.zip_code} {data.data.city}</p>
 		 
 			<p>{data.data.description}</p>
 
@@ -113,6 +119,7 @@
 
 				</div>
 				
+				<p style="font-size: 20px; font-style: italic;">{data.data.address}, {data.data.zip_code} {data.data.city}</p>
 
 				<div style="display: flex; justify-content: space-between; margin-top: 10px;">
 
@@ -243,6 +250,7 @@
 	margin-top: 15px;
 
 	width: 100%;
+	height: 40px;
 
 	border: 1px solid;
 
