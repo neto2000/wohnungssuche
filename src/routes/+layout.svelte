@@ -113,6 +113,8 @@
 	color: #ffffff;
 	text-decoration: none;
 
+	cursor: pointer;
+
 	font-family: "Google Sans", sans-serif;
 
 }

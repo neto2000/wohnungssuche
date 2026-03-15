@@ -1,8 +1,11 @@
 <script>
 	
 	import {invalidateAll} from '$app/navigation'
+    import Heart from '../../../lib/components/heart.svelte';
 
 	let {data} = $props()
+
+	let current_image = $state(0)
 
 	async function favourite() {
 		
@@ -42,39 +45,236 @@
 		await invalidateAll()
 	}
 
+	function next_picture(value) {
+
+		if (value < 0) {
+
+			if (current_image > 0) {
+
+				current_image--;
+			}
+
+			return
+
+		}
+
+		if (current_image < data.img_paths.length - 1) {
+
+			current_image++;
+
+		}
+
+		return
+
+	}
+
 </script>
 
 <svelte:head>
 	<title>{data.data.title}</title>
 </svelte:head>
 
-<div>
+<div class="center">
 
-	<p>{data.data.title}</p>
-	 
-	<p>{data.data.description}</p>
+	<div class="image-container">
 
-	<div style="display: flex; ">
+		<button class="arrow-button" onclick={() => {next_picture(-1)}}>&lt;</button>
 
-		<p style="margin-right: 10px;">{data.data.price}€</p>
-		<p style="margin-right: 10px;">{data.data.rooms}</p>
-		<p style="margin-right: 10px;">{data.data.area} m²</p>
+			<img class="image" src={"/uploads/" + data.img_paths[current_image].file_path} alt="">	
 
+		<button class="arrow-button" onclick={() => {next_picture(1)}}>&gt;</button>
 	</div>
 
-	<p>{data.data.zip_code} {data.data.city}</p>
+	<div class="info-container">
+		
+		<div>
 
-	<p>vermietet von {data.data.user_name} erreichbar unter {data.data.email}</p>
-
-	{#each data.img_paths as path}
-		<img src={"/uploads/" + path.file_path} alt="">	
-	{/each}
-
-	
-	{#if data.logged_in}
+			<p class="title">{data.data.title}</p>
+			
+			<p>{data.data.address}, {data.data.zip_code} {data.data.city}</p>
 		 
-		<button onclick={favourite}>Favorit</button>
-	{/if}
+			<p>{data.data.description}</p>
 
+
+		</div>
+
+		<div>
+
+			<div class="price-box">
+
+				<div class="price-grid">
+
+					<p style="font-size: 20px;">Preis:</p>
+					<p style="font-size: 20px;">{data.data.price}€</p>
+					<p style="font-size: 20px;">Räume:</p>
+					<p style="font-size: 20px;">{data.data.rooms}</p>
+					<p style="font-size: 20px;">Fläche:</p>
+					<p style="font-size: 20px;">{data.data.area} m²</p>
+
+				</div>
+				
+
+				<div style="display: flex; justify-content: space-between; margin-top: 10px;">
+
+					<p>Vermieter: {data.data.user_name}</p>
+
+					{#if data.logged_in}
+				 
+						<button class="heart-button" onclick={favourite}><Heart filled={data.is_fav} /></button>
+					{/if}
+
+				</div>
+			</div>
+
+
+
+			<button class="request-button">Anfragen</button>
+			
+			
+
+		</div>
+
+		
+		
+	</div>
 
 </div>
+
+<style>
+
+.center {
+
+	display: flex;
+
+	flex-direction: column;
+
+
+	align-items: center;
+}
+
+.image-container {
+	
+	display: flex;
+
+	align-items: center;
+
+	margin-top: 50px;
+}
+
+.image {
+
+	width: 40vw;
+	height: 45vh;
+
+	border-radius: 20px;
+}
+
+.info-container {
+
+	display: flex;
+
+	justify-content: space-between;
+
+	width: 40vw;
+
+}
+
+
+.price-box {
+
+	display: flex;
+
+	flex-direction: column;
+
+	border: 1px solid black;
+
+	border-radius: 10px;
+
+	margin-top: 40px;
+
+	padding: 15px 30px;
+
+	width: 350px;
+}
+
+.price-grid {
+
+	display: grid;
+
+	grid-template-columns: 30% 70%;
+}
+
+.arrow-button {
+	
+	border: none;
+
+	background-color: white;
+
+	font-family: "Google Sans", sans-serif;
+
+	font-size: 30px;
+	
+	margin: 0px 20px;
+
+	cursor: pointer;
+}
+
+.arrow-button:hover {
+
+	border: none;
+
+
+	border-radius: 10px;
+
+	background-color: #dddddd;
+
+	font-family: "Google Sans", sans-serif;
+
+	font-size: 30px;
+	
+	margin: 0px 20px;
+
+	cursor: pointer;
+
+}
+
+.request-button {
+
+	margin-top: 15px;
+
+	width: 100%;
+
+	border: 1px solid;
+
+	padding: 8px 20px;
+
+	border-color: purple;
+	background-color: purple;
+	border-radius: 25px;
+
+	color: #ffffff;
+	text-decoration: none;
+
+	cursor: pointer;
+
+	font-family: "Google Sans", sans-serif;
+
+}
+
+.heart-button {
+
+	border: none;
+
+	background-color: white;
+
+	cursor: pointer;
+}
+
+.title {
+
+	font-size: 50px;
+}
+
+
+
+</style>
