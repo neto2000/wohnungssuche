@@ -5,7 +5,7 @@
 
 	let { data } = $props();
 	
-	let conn_index = $state(0)
+	let conn_index = $state(-1)
 
 	let messages = $state([]);
 
@@ -28,9 +28,28 @@
 		// Cleanup on component destroy
 		return () => eventSource.close();
 	});
+	
 
+	async function load_messages(i) {
+		conn_index = i
 
-	let msg = ""
+		const res = await fetch('/conversations', {
+			method: 'POST',
+			body: JSON.stringify({con_id: data.conversations[conn_index].conversation_id}),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+
+		let db_messages = await res.json()
+
+		console.log(db_messages)
+
+		messages = db_messages.messages
+
+	}
+
+	let msg = $state("")
 
 	let user = "user"
 
@@ -43,13 +62,12 @@
 
 		const res = await fetch('/sse/send', {
 			method: 'POST',
-			body: JSON.stringify({message: msg, reciever: data.conversations[conn_index].reciever}),
+			body: JSON.stringify({con_id: data.conversations[conn_index].conversation_id, message: msg, reciever: data.conversations[conn_index].reciever}),
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		})
 
-		msg = ""
 	}
 
 
@@ -59,11 +77,11 @@
 
 	<div class="conn-bar">
 
-		{#each data.conversations as conversation}
+		{#each data.conversations as conversation, i}
 
 			<div class="conn">
 				<div>
-					<p>title</p>
+					<button onclick={() => {load_messages(i)}}>title</button>
 					<p>{conversation.user_id}</p>
 
 				</div>
@@ -79,17 +97,20 @@
 	</div>
 
 	<div class="chat-container">
-
-		{#each messages as message}
-			<p>{message.message}</p>
-		{/each}
 		
-		<form onsubmit={(e) => {send_msg(e)}}>
-			
-			<input type="text" bind:value={msg}>
-			<button type="submit">send</button>
+		{#if conn_index >= 0}
 
-		</form>
+			{#each messages as message}
+				<p>{message.message}</p>
+			{/each}
+			
+			<form onsubmit={(e) => {send_msg(e)}}>
+				
+				<input type="text" bind:value={msg}>
+				<button type="submit">send</button>
+
+			</form>
+		{/if}
 	</div>
 
 

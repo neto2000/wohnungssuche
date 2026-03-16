@@ -8,7 +8,7 @@ export function GET({cookies}) {
 	start(controller) {
 	    const handler = (data) => {
 
-		if (cookies.get("id") == data.user || cookies.get("id") == data.reciever) {
+		if (cookies.get("id") == data.sender_id || cookies.get("id") == data.reciever) {
 
 		    if (connected) {
 			try {
