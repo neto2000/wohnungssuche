@@ -15,14 +15,15 @@ export const load = async ({ cookies, url }) => {
     if (url.searchParams.has("vermieter")) {
 
 	const [rows,fields] = await custom_pool.query('SELECT conversation.*, conversation.user_id as reciever FROM conversation INNER JOIN flat ON conversation.flat_id = flat.flat_id WHERE flat.user_id = ?', [user])
-	    
+	
 	    
 	return {conversations: rows}
     }
 
-    const [rows,fields] = await custom_pool.query('SELECT conversation.*, flat.user_id as reciever FROM conversation INNER JOIN flat ON conversation.flat_id = flat.flat_id WHERE conversation.user_id = ?', [user])
+    const [rows,fields] = await custom_pool.query('SELECT conversation.*, flat.user_id as reciever FROM  conversation INNER JOIN flat ON conversation.flat_id = flat.flat_id WHERE conversation.user_id = ?', [user])
 
     console.log(rows)
+
 
     return {conversations: rows}
 }
