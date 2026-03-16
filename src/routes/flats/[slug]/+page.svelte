@@ -199,8 +199,8 @@
 
 .image {
 
-	width: 40vw;
-	height: 45vh;
+	width: 900px;
+	height: 600px;
 
 	border-radius: 20px;
 }
@@ -211,7 +211,7 @@
 
 	justify-content: space-between;
 
-	width: 40vw;
+	width: 900px;
 
 }
 

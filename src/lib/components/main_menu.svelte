@@ -55,7 +55,9 @@
 
 	.float {
 		
-		position: absolute;
+		position: fixed;
+
+		z-index: 10;
 
 		display: flex;
 

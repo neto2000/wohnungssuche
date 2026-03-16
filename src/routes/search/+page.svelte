@@ -210,6 +210,8 @@
 
 	align-items: center;
 
+	flex-wrap: wrap;
+
 	margin-bottom: 15px;
 
 	gap: 10px;
