@@ -15,8 +15,8 @@ export async function POST({request, cookies}) {
 
 
 			cookies.set('id', rows[0].user_id, {
-				path: '/', 
-				sameSite: 'strict'
+				path: '/',
+				secure: false
 			})
 
 

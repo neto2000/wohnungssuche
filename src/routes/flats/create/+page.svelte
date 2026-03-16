@@ -171,7 +171,7 @@
 {/each}
 
 
-<input type="file" bind:files onchange={() => {display_image()}} accept=".png,.jpg,.webm">
+<input type="file" bind:files onchange={() => {display_image()}} accept=".png,.jpg,.webp">
 
 <p style="color: red;">{error}</p>
 

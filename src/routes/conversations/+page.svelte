@@ -81,7 +81,7 @@
 
 			<div class="conn">
 				<div>
-					<button onclick={() => {load_messages(i)}}>title</button>
+					<button onclick={() => {load_messages(i)}}>öffnen</button>
 					<p>{conversation.user_id}</p>
 
 				</div>

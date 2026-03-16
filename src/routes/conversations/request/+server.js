@@ -11,7 +11,7 @@ export async function POST({request, cookies}) {
 
 	const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
 
-	const [rows,fields] = await custom_pool.query('SELECT conversation WHERE user_id = ? AND flat_id = ?', [user, flat_id])
+	const [rows,fields] = await custom_pool.query('SELECT * FROM conversation WHERE user_id = ? AND flat_id = ?', [user, flat_id])
 
 	if (rows.length > 0) {
 
